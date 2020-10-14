@@ -22,6 +22,7 @@ jobs:
     env:
       RUST_VERSION: ${{ matrix.rust }}
     strategy:
+      fail-fast: false
       matrix:
         crates:
           - crossbeam
@@ -32,11 +33,11 @@ jobs:
           - crossbeam-skiplist
           - crossbeam-utils
         rust:
-          - 1.36.0
+          # - 1.36.0
           - nightly
         os:
          - ubuntu-latest
-         - windows-latest
+        #  - windows-latest
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@master
