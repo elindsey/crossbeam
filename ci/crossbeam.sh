@@ -12,4 +12,7 @@ if [[ "$RUST_VERSION" == "nightly"* ]]; then
     cargo test --features nightly
 
     RUSTDOCFLAGS=-Dwarnings cargo doc --no-deps --all-features
+
+    # -Zmiri-ignore-leaks is needed for https://github.com/crossbeam-rs/crossbeam/issues/579
+    ./ci/miri.sh -- -Zmiri-ignore-leaks
 fi

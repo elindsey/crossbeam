@@ -12,4 +12,8 @@ if [[ "$RUST_VERSION" == "nightly"* ]]; then
     cargo test --features nightly
 
     RUSTDOCFLAGS=-Dwarnings cargo doc --no-deps --all-features
+
+    # -Zmiri-disable-stacked-borrows is needed for https://github.com/crossbeam-rs/crossbeam/issues/545
+    # -Zmiri-ignore-leaks is needed for https://github.com/crossbeam-rs/crossbeam/issues/579
+    ./../ci/miri.sh -- -Zmiri-disable-stacked-borrows -Zmiri-ignore-leaks
 fi

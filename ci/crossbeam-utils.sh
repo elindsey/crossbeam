@@ -12,4 +12,6 @@ if [[ "$RUST_VERSION" == "nightly"* ]]; then
     cargo test --features nightly
 
     RUSTDOCFLAGS=-Dwarnings cargo doc --no-deps --all-features
+
+    ./../ci/miri.sh -- -Zmiri-disable-isolation
 fi
