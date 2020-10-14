@@ -1,4 +1,5 @@
 //! Tests for the array channel flavor.
+#![cfg(not(miri))] // todo
 
 use std::any::Any;
 use std::sync::atomic::AtomicUsize;

@@ -490,6 +490,9 @@ fn nesting() {
 
 #[test]
 fn stress_recv() {
+    #[cfg(miri)]
+    const COUNT: usize = 500;
+    #[cfg(not(miri))]
     const COUNT: usize = 10_000;
 
     let (s1, r1) = unbounded();
@@ -527,6 +530,9 @@ fn stress_recv() {
 
 #[test]
 fn stress_send() {
+    #[cfg(miri)]
+    const COUNT: usize = 500;
+    #[cfg(not(miri))]
     const COUNT: usize = 10_000;
 
     let (s1, r1) = bounded(0);
@@ -561,6 +567,9 @@ fn stress_send() {
 
 #[test]
 fn stress_mixed() {
+    #[cfg(miri)]
+    const COUNT: usize = 500;
+    #[cfg(not(miri))]
     const COUNT: usize = 10_000;
 
     let (s1, r1) = bounded(0);
@@ -724,6 +733,9 @@ fn channel_through_channel() {
 
 #[test]
 fn fairness1() {
+    #[cfg(miri)]
+    const COUNT: usize = 500;
+    #[cfg(not(miri))]
     const COUNT: usize = 10_000;
 
     let (s1, r1) = bounded::<()>(COUNT);
@@ -769,6 +781,9 @@ fn fairness1() {
 
 #[test]
 fn fairness2() {
+    #[cfg(miri)]
+    const COUNT: usize = 500;
+    #[cfg(not(miri))]
     const COUNT: usize = 100_000;
 
     let (s1, r1) = unbounded::<()>();

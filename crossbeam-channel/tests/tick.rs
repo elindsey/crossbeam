@@ -1,4 +1,5 @@
 //! Tests for the tick channel flavor.
+#![cfg(not(miri))]
 
 use std::sync::atomic::AtomicUsize;
 use std::sync::atomic::Ordering;

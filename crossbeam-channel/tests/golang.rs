@@ -9,6 +9,8 @@
 //!   - https://golang.org/LICENSE
 //!   - https://golang.org/PATENTS
 
+#![cfg(not(miri))] // todo
+
 use std::alloc::{GlobalAlloc, Layout, System};
 use std::any::Any;
 use std::cell::Cell;
